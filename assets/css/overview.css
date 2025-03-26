@@ -1,0 +1,293 @@
+
+/* تنسيقات سيكشن النظرة العامة */
+.overview-section {
+    padding: 5rem 0;
+    position: relative;
+    background-color: var(--light-bg);
+    overflow: hidden;
+}
+
+/* خلفية مزخرفة للسيكشن */
+.overview-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background-image: url('../images/pattern.svg');
+    background-repeat: repeat;
+    opacity: 0.03;
+    z-index: 0;
+}
+
+/* تنسيق شبكة الإحصائيات */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* تنسيق بطاقة الإحصائية */
+.stat-card {
+    background-color: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    padding: 2rem 1.5rem;
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 4px solid var(--primary-color);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+    animation-delay: calc(var(--animation-order, 0) * 0.1s);
+}
+
+/* تأثير الحركة عند التحميل */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* تعيين تأخير مختلف لكل بطاقة */
+.stat-card:nth-child(1) { --animation-order: 1; }
+.stat-card:nth-child(2) { --animation-order: 2; }
+.stat-card:nth-child(3) { --animation-order: 3; }
+.stat-card:nth-child(4) { --animation-order: 4; }
+
+/* تأثير عند تحويم المؤشر */
+.stat-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-bottom-color: var(--secondary-color);
+}
+
+/* زخرفة خلفية البطاقة */
+.stat-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-light) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
+}
+
+.stat-card:hover::before {
+    opacity: 0.5;
+}
+
+/* تنسيق أيقونة الإحصائية */
+.stat-icon {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-light);
+    color: var(--primary-color);
+    border-radius: 50%;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.stat-card:hover .stat-icon {
+    background-color: var(--primary-color);
+    color: var(--white);
+    transform: rotateY(180deg);
+}
+
+/* تنسيق محتوى الإحصائية */
+.stat-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+}
+
+/* تنسيق قيمة الإحصائية */
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    position: relative;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover .stat-value {
+    color: var(--secondary-dark);
+    transform: scale(1.05);
+}
+
+/* إضافة خط تحت القيمة */
+.stat-value::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background-color: var(--secondary-color);
+    transition: width 0.3s ease;
+}
+
+.stat-card:hover .stat-value::after {
+    width: 60px;
+}
+
+/* تنسيق مسمى الإحصائية */
+.stat-label {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-top: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.stat-card:hover .stat-label {
+    color: var(--text-color);
+}
+
+/* إضافة خلفية مزخرفة لكل بطاقة */
+.stat-card::after {
+    content: "";
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    background-image: url('../images/stat-pattern.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.1;
+    transition: all 0.4s ease;
+}
+
+.stat-card:hover::after {
+    transform: scale(1.2) rotate(25deg);
+    opacity: 0.2;
+}
+
+/* تنسيق عنوان السيكشن */
+.overview-section .section-header {
+    position: relative;
+    z-index: 1;
+}
+
+.overview-section .section-header h2 {
+    position: relative;
+    padding-bottom: 0.8rem;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    display: inline-block;
+}
+
+.overview-section .section-header h2::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 70%;
+    height: 3px;
+    background: var(--secondary-color);
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+}
+
+.overview-section .section-header p {
+    color: var(--text-light);
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 1rem;
+}
+
+/* تحسينات للشاشات الصغيرة */
+@media screen and (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .stat-card {
+        padding: 1.5rem 1rem;
+    }
+    
+    .stat-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.7rem;
+        margin-bottom: 1rem;
+    }
+    
+    .stat-value {
+        font-size: 2rem;
+    }
+    
+    .stat-label {
+        font-size: 1rem;
+    }
+    
+    .overview-section .section-header h2 {
+        font-size: 2rem;
+    }
+}
+
+/* تحسينات للشاشات الصغيرة جداً */
+@media screen and (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .stat-card {
+        flex-direction: row;
+        text-align: right;
+        padding: 1.2rem;
+    }
+    
+    .stat-icon {
+        margin-bottom: 0;
+        margin-left: 1rem;
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+    
+    .stat-content {
+        flex-grow: 1;
+    }
+    
+    .stat-value::after {
+        right: 0;
+        left: auto;
+        transform: none;
+    }
+    
+    .overview-section .section-header h2 {
+        font-size: 1.8rem;
+    }
+}
